@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Listado de orden</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: white;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 15px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        .btn {
+            padding: 4px 8px;
+            text-decoration: none;
+            border: 1px solid black;
+            font-size: 14px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Orden de Productos</h1>
+    <a class="btn" th:href="@{/productos/nuevo}">Nueva orden</a>
+    <table>
+        <thead>
+        <tr>
+            <th>ID orden</th>
+            <th>ID producto</th>
+            <th>Producto</th>
+            <th>Cantidad</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="p : ${listaPrestamos}">
+            <td th:text="${p.id}">1</td>
+            <td th:text="${p.idorden}">101</td>
+            <td th:text="${p.nombreproducto}">Naranja</td>
+
+            <td>
+                <a class="btn" th:href="@{/Productos/editar/{id}(id=${p.id})}">Editar</a>
+                <a class="btn" th:href="@{/Productos/eliminar/{id}(id=${p.id})}">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

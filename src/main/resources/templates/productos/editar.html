@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edicion de Ordenes</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: white;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label, input {
+            margin: 5px 0;
+        }
+        input[type='text'],
+        input[type='number'],
+        input[type='date'] {
+            padding: 5px;
+            font-size: 14px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid black;
+            background: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Añadir Orden</h1>
+    <form th:action="@{/productos/guardar}" th:object="${productos}" method="post">
+        <input type="hidden" th:field="*{id}" />
+
+        <label for="idorden">ID orden:</label>
+        <input type="number" id="idorden" th:field="*{idorden}" required />
+
+        <label for="idproducto">ID producto:</label>
+        <input type="number" id="idproducto" th:field="*{idproducto}" required />
+
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" id="cantidad" th:field="*{cantidad}" required />
+
+        <button type="submit">Guardar</button>
+    </form>
+</div>
+</body>
+</html>
